@@ -1,0 +1,19 @@
+{
+  "name": "ai-tools",
+  "version": "1.0.0",
+  "description": "web app for ai tools",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/index.js",
+    "dev": "nodemon backend/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sumit Mehta",
+  "license": "MIT",
+  "dependencies": {
+    "color": "^4.2.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1"
+  }
+}
