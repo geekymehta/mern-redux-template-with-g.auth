@@ -5,7 +5,7 @@ const morgan = require("morgan");
 const AppError = require("./model/errorModel");
 const connectDB = require("./config/db");
 const passport = require("passport");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 connectDB();
 
