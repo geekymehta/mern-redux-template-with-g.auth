@@ -1,7 +1,7 @@
 //@access Private
 //@route POST /api/gpt
 const OpenAI = require("openai");
-const AppError = require("../models/errorModel");
+const AppError = require("../model/errorModel");
 
 const openai = new OpenAI({
   apiKey: "",
@@ -13,10 +13,11 @@ const getGptAnswer = async (req, res, next) => {
 
     /* we need to use the next() function to pass the error to the error handling middleware in async functions */
 
-    // throw new AppError("Not Implemente", 501); // this line may not work in async functions, hence we will have to use the next() function and make sure to use the return before it if we dont want the code below it to execute
+    // throw new AppError("Not Implemented", 501); /* this line may not work in async functions, hence we will have to use the next() function and make sure to use the return before it if we dont want the code below it to execute*/
 
+    // throw new AppError("Not Implemented", 501); // alternative : we can use the throw keyword to throw the error and then we can use the next() function in catch(){next(err);} block to pass the error to the next error handling middleware
     return next(
-      new AppError("Not Implemente", 501)
+      new AppError("Not Implemented", 501)
     ); /*execution of this file ends here, "even the catch block is not executed as we returned the statement" */
 
     const completion = await openai.completions.create({
@@ -33,12 +34,10 @@ const getGptAnswer = async (req, res, next) => {
       .status(200)
       .json({ message: "gpt answer", answer: completion.choices[0].text });
   } catch (error) {
-    console.error("status: " + error.status);
-    console.error("message: " + error.message);
-    res
-      .status(500)
-      .json({ message: "Something went wrong", error: error.message });
     next(error); // Pass the error to the next error handling middleware
+    // res
+    //   .status(500)
+    //   .json({ message: "Something went wrong", error: error.message });
   }
 };
 
