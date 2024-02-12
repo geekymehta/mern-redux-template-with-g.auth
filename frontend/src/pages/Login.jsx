@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa6";
+import { FcGoogle } from "react-icons/fc";
 
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
@@ -113,7 +113,7 @@ const Login = () => {
           className="btn btn-block"
           onClick={googleLoginHandler}
         >
-          <FaGoogle />
+          <FcGoogle />
         </button>
       </section>
     </>
