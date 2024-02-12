@@ -6,6 +6,7 @@ const AppError = require("./model/errorModel");
 const connectDB = require("./config/db");
 const passport = require("passport");
 const PORT = process.env.PORT || 5000;
+const cookieParser = require("cookie-parser");
 
 connectDB();
 
@@ -16,6 +17,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
+
+app.use(cookieParser());
+
+app.get("/api/auth/token", (req, res) => {
+  const token = req.cookies.token;
+
+  if (!token) {
+    return res.status(401).json({ error: "No token found" });
+  }
+
+  res.json({ token });
+});
 
 app.use("/api/gpt", require("./routes/gptRoutes"));
 

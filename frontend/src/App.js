@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import PrepareLogin from "./pages/PrepareLogin";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Header />
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="prepareLogin" element={<PrepareLogin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

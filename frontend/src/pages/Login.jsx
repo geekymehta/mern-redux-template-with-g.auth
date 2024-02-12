@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa6";
+
 import { z } from "zod";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -59,6 +61,11 @@ const Login = () => {
     }
   };
 
+  const googleLoginHandler = () => {
+    // dispatch(googleLogin());
+    window.location.assign("http://localhost:5000/api/auth/google/login"); // dispatch(googleLogin());
+  };
+
   if (isLaoading) {
     return <Spinner />;
   }
@@ -101,6 +108,13 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <button
+          type="submit"
+          className="btn btn-block"
+          onClick={googleLoginHandler}
+        >
+          <FaGoogle />
+        </button>
       </section>
     </>
   );
